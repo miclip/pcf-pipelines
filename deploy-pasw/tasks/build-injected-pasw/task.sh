@@ -14,4 +14,4 @@ chmod 700 winfs-injector-linux
 
 ls -ltr
 
-./winfs-injector-linux --input-tile ../../pivnet-pasw/pas-windows-2.1.6-build.1.pivotal --output-tile ../../pas-windows-2.1.6.injected.pivotal
+./winfs-injector-linux --input-tile ../pivnet-pasw/pas-windows-2.1.6-build.1.pivotal --output-tile ../../pas-windows-2.1.6.injected.pivotal
