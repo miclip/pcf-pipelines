@@ -12,6 +12,9 @@ pivnet_token: haUNsCVJEeLUPJRyxAFD
 # PCF Ops Manager minor version to track
 pasw_major_minor_version: ^2\.1\.[0-9]+$ # Ops Manager minor version to track (e.g ^2\.0\.[0-9]+$ will track 2.0.x versions)
 
+# IaaS for downloading the correct Stemcell: aws, azure, gcp
+iaas: gcp
+
 git_private_key: |
     -----BEGIN RSA PRIVATE KEY-----
     MIIJKQIBAAKCAgEAuVVpr7A82rog9E7AO8OCdfCaJkoXFBuDhbzuiWLn6odCm1J7

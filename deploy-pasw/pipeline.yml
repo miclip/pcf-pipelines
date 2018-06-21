@@ -30,18 +30,28 @@ resources:
     sort_by: semver
 
 jobs:
-- name: upload-pasw-injected
+- name: build-pasw-injected
   plan:
   - get: pcf-pipelines
   - get: pivnet-pasw
-    trigger: true
     params:
       globs:
       - "*.pivotal"
   - get: pivnet-winfs-injector
-    trigger: true
     params:
       globs:
       - "*injector*"
   - task: build-injected-pasw
     file: pcf-pipelines/deploy-pasw/tasks/build-injected-pasw/task.yml
+  - task: upload-injected-pasw-and-stemcell
+    file: pcf-pipelines/deploy-pasw/tasks/upload-injected-pasw-and-stemcell/task.yml
+    params:
+      OPSMAN_DOMAIN_OR_IP_ADDRESS: {{opsman_domain_or_ip_address}}
+      OPSMAN_CLIENT_ID: ""
+      OPSMAN_CLIENT_SECRET: ""
+      OPS_MGR_USR: {{opsman_admin_username}}
+      OPS_MGR_PWD: {{opsman_admin_password}}
+      PIVNET_API_TOKEN: {{pivnet_token}}
+      IAAS: {{iaas}}
+      NO_PROXY: ""
+      OM_IP: ""

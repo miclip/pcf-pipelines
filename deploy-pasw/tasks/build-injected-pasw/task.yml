@@ -12,3 +12,5 @@ inputs:
 - name: pivnet-winfs-injector
 run:
   path: pcf-pipelines/deploy-pasw/tasks/build-injected-pasw/task.sh
+outputs:
+- name: pasw-injected
