@@ -12,6 +12,6 @@ ls -ltr
 unzip ./winfs-injector-0.8.0.zip
 chmod 700 winfs-injector-linux
 
-ls -ltr ../pivnet-pasw/
+FILE_PATH=`find ../pivnet-pasw -name *.pivotal | sort | head -1`
 
-./winfs-injector-linux --input-tile ../pivnet-pasw/pas-windows-2.1.7-build.1.pivotal --output-tile ../pasw-injected/pas-windows-2.1.6.injected.pivotal
+./winfs-injector-linux --input-tile ../pivnet-pasw/$FILE_PATH --output-tile ../pasw-injected/pas-windows-2.1.6.injected.pivotal
