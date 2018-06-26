@@ -6,6 +6,7 @@ if [[ -n "$NO_PROXY" ]]; then
   echo "$OM_IP $OPSMAN_DOMAIN_OR_IP_ADDRESS" >> /etc/hosts
 fi
 
+: <<'END'
 STEMCELL_VERSION=$(
   cat ./pasw-injected/metadata.json |
   jq --raw-output \
@@ -77,6 +78,8 @@ if [ -n "$STEMCELL_VERSION" ]; then
       -s $SC_FILE_PATH
   fi
 fi
+
+END
 
 # Should the slug contain more than one product, pick only the first.
 FILE_PATH=`find ./pasw-injected -name *.pivotal | sort | head -1`

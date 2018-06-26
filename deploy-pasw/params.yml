@@ -1,10 +1,10 @@
 
 # # The domain to access Operations Manager;
-opsman_domain_or_ip_address: https://pcf.dorris.cf-app.com
+opsman_domain_or_ip_address: https://pcf.pikachu.cf-app.com
 # Operations Manager credentials to set
 # opsman_admin_username/opsman_admin_password needs to be specified
 opsman_admin_username: pivotalcf
-opsman_admin_password: fxtae6y139g83q4t
+opsman_admin_password: pivotalcf
 
 # Pivnet token for downloading resources from Pivnet. Find this token at https://network.pivotal.io/users/dashboard/edit-profile
 pivnet_token: haUNsCVJEeLUPJRyxAFD
@@ -13,7 +13,7 @@ pivnet_token: haUNsCVJEeLUPJRyxAFD
 pasw_major_minor_version: ^2\.1\.[0-9]+$ # Ops Manager minor version to track (e.g ^2\.0\.[0-9]+$ will track 2.0.x versions)
 
 # IaaS for downloading the correct Stemcell: aws, azure, gcp
-iaas: gcp
+#iaas: vsphere
 
 git_private_key: |
     -----BEGIN RSA PRIVATE KEY-----
