@@ -33,6 +33,7 @@ jobs:
 - name: build-pasw-injected
   plan:
   - get: pcf-pipelines
+    trigger: true
   - get: pivnet-pasw
     params:
       globs:
