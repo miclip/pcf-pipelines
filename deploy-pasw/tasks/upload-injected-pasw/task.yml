@@ -24,4 +24,4 @@ inputs:
   - name: pasw-injected
 
 run:
-  path: pcf-pipelines/deploy-pasw/upload-injected-pasw/task.sh
+  path: pcf-pipelines/deploy-pasw/tasks/build-injected-pasw/task.sh
