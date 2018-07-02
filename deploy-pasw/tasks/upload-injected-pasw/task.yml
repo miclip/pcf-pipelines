@@ -17,7 +17,6 @@ params:
   PIVNET_API_TOKEN:
   NO_PROXY:
   OM_IP:
-  IAAS:
 
 inputs:
   - name: pcf-pipelines

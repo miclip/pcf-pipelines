@@ -1,17 +1,15 @@
 #!/bin/bash
 set -eu
 
-echo "Executing the script now"
+echo "Entering Build Injected PASW Task"
 
-ls -ltr
-
-#tar -xvf ./winfs-injector-0.8.0.zip
-#chmod 700 winfs-injector-linux
+#Unzip the WinFS Injector
 cd pivnet-winfs-injector
-ls -ltr
-unzip ./winfs-injector-0.8.0.zip
+unzip "*winfs*"
 chmod 700 winfs-injector-linux
 
+#Find the original tile
 FILE_PATH=`find ../pivnet-pasw -name *.pivotal | sort | head -1`
 
-./winfs-injector-linux --input-tile ../pivnet-pasw/$FILE_PATH --output-tile ../pasw-injected/pas-windows-2.1.6.injected.pivotal
+#Run the injector with the input as the original tile and output the winfs-injected tile
+./winfs-injector-linux --input-tile ../pivnet-pasw/$FILE_PATH --output-tile ../pasw-injected/$FILE_PATH

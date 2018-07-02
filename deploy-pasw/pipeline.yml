@@ -53,6 +53,5 @@ jobs:
       OPS_MGR_USR: {{opsman_admin_username}}
       OPS_MGR_PWD: {{opsman_admin_password}}
       PIVNET_API_TOKEN: {{pivnet_token}}
-      IAAS: {{iaas}}
       NO_PROXY: ""
       OM_IP: ""
