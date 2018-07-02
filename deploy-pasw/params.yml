@@ -7,7 +7,7 @@ opsman_admin_username: pivotalcf
 opsman_admin_password: pivotalcf
 
 # Pivnet token for downloading resources from Pivnet. Find this token at https://network.pivotal.io/users/dashboard/edit-profile
-pivnet_token: haUNsCVJEeLUPJRyxAFD
+pivnet_token: 7e202f5a5e1647628cafab44fa1eae3a-r
 
 # PCF Ops Manager minor version to track
 pasw_major_minor_version: ^2\.1\.[0-9]+$ # Ops Manager minor version to track (e.g ^2\.0\.[0-9]+$ will track 2.0.x versions)
