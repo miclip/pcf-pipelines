@@ -10,8 +10,9 @@ fi
 
 # Should the slug contain more than one product, pick only the first.
 ls -ltr
-
-FILE_PATH=`find ./pasw-injected -name *.pivotal | sort | head -1`
+cd pasw-injected
+ls -ltr
+FILE_PATH=`find ./pasw-injected/ -name *.pivotal | sort | head -1`
 echo $FILE_PATH
 om-linux -t https://$OPSMAN_DOMAIN_OR_IP_ADDRESS \
   --client-id "${OPSMAN_CLIENT_ID}" \
