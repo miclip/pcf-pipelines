@@ -11,6 +11,7 @@ fi
 # Should the slug contain more than one product, pick only the first.
 ls -ltr
 cd pasw-injected
+echo "Entering into the directory"
 ls -ltr
 FILE_PATH=`find ./pasw-injected/ -name *.pivotal | sort | head -1`
 echo $FILE_PATH
