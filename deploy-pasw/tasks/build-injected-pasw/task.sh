@@ -11,7 +11,9 @@ chmod 700 winfs-injector-linux
 #Find the original tile
 FILE_PATH=`find ../pivnet-pasw -name *.pivotal | sort | head -1`
 
+echo $FILE_PATH
+
 #Run the injector with the input as the original tile and output the winfs-injected tile
 ./winfs-injector-linux --input-tile ../pivnet-pasw/$FILE_PATH --output-tile ../pasw-injected/$FILE_PATH
 
-ls -ltr ../pasw-injected 
+ls -ltr ../pasw-injected
