@@ -8,19 +8,11 @@ cd pivnet-winfs-injector
 unzip "*winfs*"
 chmod 700 winfs-injector-linux
 
-ls -ltr
 #Find the original tile
 cd ../pivnet-pasw
-ls -ltr
 FILE_PATH=`find . -name *.pivotal | sort | head -1`
-
-echo $FILE_PATH
-cd ..
-
-ls -ltr
 
 
 #Run the injector with the input as the original tile and output the winfs-injected tile
-#./winfs-injector-linux --input-tile ../pivnet-pasw/$FILE_PATH --output-tile ../pasw-injected/$FILE_PATH
-
-#ls -ltr ../pasw-injected
+cd ../pivnet-winfs-injector
+./winfs-injector-linux --input-tile ../pivnet-pasw/$FILE_PATH --output-tile ../pasw-injected/$FILE_PATH
