@@ -9,8 +9,15 @@ resources:
 - name: pcf-pipelines
   type: git
   source:
-    uri: git@github.com:kartiklunkad26/pcf-pipelines.git
+    uri: git@github.com:miclip/pcf-pipelines.git
     branch: deploy-pasw
+    private_key: {{git_private_key}}
+
+- name: configuration
+  type: git
+  source:
+    uri: git@github.com:miclip/deploy-pasw-config.git
+    branch: master
     private_key: {{git_private_key}}
 
 - name: pivnet-pasw
@@ -30,7 +37,7 @@ resources:
     sort_by: semver
 
 jobs:
-- name: build-pasw-injected
+- name: build-stage-pasw-injected
   plan:
   - get: pcf-pipelines
     trigger: true
@@ -55,3 +62,50 @@ jobs:
       PIVNET_API_TOKEN: {{pivnet_token}}
       NO_PROXY: ""
       OM_IP: ""
+  - task: upload-product-stemcell
+    file: pcf-pipelines/tasks/upload-product-and-stemcell/task.yml
+    params:
+      OPSMAN_DOMAIN_OR_IP_ADDRESS: {{opsman_domain_or_ip_address}}
+      OPSMAN_CLIENT_ID: ""
+      OPSMAN_CLIENT_SECRET: ""
+      OPS_MGR_USR: {{opsman_admin_username}}
+      OPS_MGR_PWD: {{opsman_admin_password}}
+      PIVNET_API_TOKEN: {{pivnet_token_legacy}}
+      NO_PROXY: ""
+      OM_IP: ""
+      IAAS: azure
+    input_mapping: {pivnet-product: pivnet-pasw}
+  - task: stage-pasw
+    file: pcf-pipelines/tasks/stage-product/task.yml
+    params:
+      OPSMAN_DOMAIN_OR_IP_ADDRESS: {{opsman_domain_or_ip_address}}
+      OPSMAN_CLIENT_ID: ""
+      OPSMAN_CLIENT_SECRET: ""
+      OPSMAN_USERNAME: {{opsman_admin_username}}
+      OPSMAN_PASSWORD: {{opsman_admin_password}}
+    input_mapping: {pivnet-product: pivnet-pasw}
+
+- name: configure-pasw
+  plan:
+  - get: pcf-pipelines
+    trigger: true
+    passed: [build-stage-pasw-injected]
+  - get: configuration
+    trigger: false
+  - task: configure-pasw
+    file: pcf-pipelines/tasks/configure-product/task.yml
+    params:
+      OPSMAN_DOMAIN_OR_IP_ADDRESS: {{opsman_domain_or_ip_address}}
+      OPSMAN_CLIENT_ID: ""
+      OPSMAN_CLIENT_SECRET: ""
+      OPSMAN_USERNAME: {{opsman_admin_username}}
+      OPSMAN_PASSWORD: {{opsman_admin_password}}
+      PRODUCT_NAME: {{product_name}}
+      PRODUCT_NETWORK_FILE: configuration/network-properties.json
+      PRODUCT_PROPERTIES_FILE: configuration/product-properties.json
+      PRODUCT_RESOURCES_FILE: configuration/product-resources.json
+
+
+
+
+   
